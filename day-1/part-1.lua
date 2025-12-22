@@ -14,18 +14,13 @@ local function get_password(file_path)
 
         if first_char == "R" then
             idx = idx + value
-        else
+        elseif first_char == "L" then
             idx = idx - value
+            else
+                error("Unexpected direction: " .. tostring(first_char))
         end
 
-            if idx < 0 then
-                idx = idx % 100
-            end
-
-            if idx > 99 then
-                idx = idx % 100
-            end
-
+        idx = idx % 100
             if idx == 0 then
                 table.insert(result, line)
             end
